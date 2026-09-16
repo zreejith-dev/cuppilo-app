@@ -1,0 +1,317 @@
+/* Design tokens — chosen for a small independent café brand, not a SaaS
+   template: warm roasted tones, one serif for identity, one plain sans for
+   everything functional. See cuppilo.md for the reasoning. */
+:root {
+  --bg: #FBF7F1;
+  --ink: #2B2118;
+  --accent: #A8461E;      /* roasted terracotta — distinct from the generic #D97757 tell */
+  --line: #E4D9C8;
+  --card-bg: #FFFFFF;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+[data-theme='dark'] {
+  --bg: #211A14;
+  --ink: #F3EAE0;
+  --line: #3A2F24;
+  --card-bg: #2B221A;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+a { color: inherit; }
+
+/* ---------- Header / Footer ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+.site-nav { display: flex; gap: 0.75rem; }
+.site-nav button {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.menu-panel {
+  position: absolute;
+  right: 1.5rem;
+  top: 4rem;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.menu-panel.hidden { display: none; }
+
+.site-footer {
+  padding: 2rem 1.5rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.footer-links { display: flex; gap: 1.25rem; justify-content: center; margin: 0.75rem 0; }
+.footer-note { font-size: 0.8rem; opacity: 0.6; }
+
+/* ---------- Layout ---------- */
+main { max-width: 640px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+/* ---------- Hero ---------- */
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  max-width: 18ch;
+  margin-bottom: 1rem;
+}
+.hero-copy { max-width: 60ch; opacity: 0.85; margin-bottom: 2rem; }
+.name-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--card-bg);
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-secondary {
+  background: var(--card-bg);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+/* ---------- Questions ---------- */
+.progress-bar { height: 4px; background: var(--line); border-radius: 2px; margin-bottom: 1rem; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s ease; }
+.question-count { font-size: 0.85rem; opacity: 0.6; margin-bottom: 0.5rem; }
+.questions h2 { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 1.5rem; }
+.option-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.option-card {
+  text-align: left;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.option-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(168, 70, 30, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Q1 option cards with icons */
+.option-card--q1 { padding: 1.1rem 1.25rem; }
+.opt-content { display: flex; align-items: center; gap: 0.85rem; }
+.opt-icon { font-size: 1.75rem; color: var(--accent); flex-shrink: 0; }
+.opt-text-group { display: flex; flex-direction: column; gap: 0.15rem; }
+.opt-text { font-weight: 500; line-height: 1.3; }
+.opt-desc { font-size: 0.82rem; opacity: 0.55; line-height: 1.3; }
+
+/* Vibe text input */
+.vibe-section { margin-top: 1.25rem; }
+.vibe-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem; opacity: 0.85; }
+.vibe-input {
+  width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--line); border-radius: 8px;
+  font-size: 0.9rem; font-family: var(--font-body); background: var(--card-bg); color: var(--ink);
+  resize: vertical; min-height: 80px; transition: border-color 0.2s;
+}
+.vibe-input:focus { outline: none; border-color: var(--accent); }
+.loading-text { opacity: 0.6; text-align: center; padding: 2rem 0; }
+
+/* ---------- Reveal ---------- */
+.founder-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  background: var(--card-bg);
+}
+.founder-label { opacity: 0.7; margin-bottom: 0.5rem; }
+.founder-number { font-family: var(--font-display); font-size: 1.8rem; margin: 0; }
+.founder-id { letter-spacing: 0.05em; opacity: 0.7; margin-top: 0.25rem; }
+.qr-container { display: flex; justify-content: center; margin-top: 1.5rem; }
+.reveal-actions { display: flex; flex-direction: column; align-items: center; margin-top: 1.5rem; gap: 0.5rem; }
+
+/* ---------- Wall ---------- */
+.wall-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+.wall-table th, .wall-table td {
+  text-align: left;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+
+/* ---------- Support ---------- */
+.report-form { display: flex; flex-direction: column; gap: 0.75rem; margin: 1.5rem 0; }
+.support-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 480px; margin: 2rem auto; }
+
+.error { color: var(--accent); }
+
+/* ---------- Support Page (BMC) ---------- */
+.sup-hero { text-align: center; padding: 2rem 0 1rem; }
+.sup-hero p { opacity: 0.8; margin-top: 0.5rem; }
+.flip-container { max-width: 340px; margin: 2rem auto; perspective: 1200px; cursor: pointer; }
+.flip-inner { position: relative; width: 100%; height: 340px; transition: transform 0.7s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+.flip-container.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-front, .flip-back {
+  backface-visibility: hidden; position: absolute; width: 100%; height: 100%;
+  border-radius: 1.5rem; overflow: hidden; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.flip-front { background: linear-gradient(135deg, var(--accent), #7a2f14); color: #fff; padding: 2rem; }
+.flip-back { background: var(--card-bg); color: var(--ink); transform: rotateY(180deg); padding: 2rem; }
+.flip-front .material-symbols-outlined { font-size: 4rem; margin-bottom: 1rem; opacity: 0.8; }
+.flip-front h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.25rem; letter-spacing: 0.04em; font-family: var(--font-display); }
+.flip-front p { font-size: 0.875rem; opacity: 0.7; }
+.flip-hint { font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; display: flex; align-items: center; gap: 0.25rem; }
+.flip-hint .material-symbols-outlined { font-size: 14px; }
+.flip-back img { width: 180px; height: 180px; border-radius: 1rem; margin-bottom: 1rem; }
+.flip-back .qr-label { font-size: 0.8125rem; opacity: 0.7; margin-bottom: 0.25rem; }
+.flip-back .qr-link { font-size: 0.6875rem; color: var(--accent); font-family: monospace; }
+.btn-bmc {
+  display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2.25rem;
+  border-radius: 9999px; background: #FFDD00; color: #000; font-weight: 700;
+  font-size: 1rem; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
+}
+.btn-bmc:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,221,0,.3); }
+.report-card {
+  background: var(--card-bg); border: 1px solid var(--line); border-radius: 1rem;
+  padding: 1.25rem; text-align: center;
+}
+.report-card .material-symbols-outlined { font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem; }
+.report-card .value { font-size: 1.5rem; font-weight: 800; }
+.report-card .label { font-size: 0.75rem; opacity: 0.7; margin-top: 0.25rem; }
+.sup-note { text-align: center; padding: 2rem 1rem; max-width: 400px; margin: 0 auto; }
+.sup-note p { font-size: 0.8125rem; opacity: 0.8; line-height: 1.6; }
+.sup-note strong { color: var(--accent); }
+@media (max-width: 480px) { .support-stats { grid-template-columns: 1fr; } }
+
+/* ---------- Profile icon in header ---------- */
+.profile-icon {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.3rem 0.6rem; border-radius: 9999px;
+  background: var(--line); cursor: default; font-size: 0.8rem;
+}
+.profile-avatar {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.75rem;
+}
+.profile-name { font-weight: 500; max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---------- Name modal ---------- */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; animation: fadeIn 0.2s ease;
+}
+.modal-card {
+  background: var(--card-bg); border-radius: 16px; padding: 2rem;
+  width: 100%; max-width: 380px; position: relative;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  animation: slideUp 0.25s ease;
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: none; font-size: 1.5rem; cursor: pointer;
+  color: var(--ink); opacity: 0.5; line-height: 1;
+}
+.modal-close:hover { opacity: 1; }
+.modal-card h2 { margin: 0 0 0.25rem; font-family: var(--font-display); font-size: 1.4rem; }
+.modal-sub { opacity: 0.7; margin-bottom: 1rem; font-size: 0.9rem; }
+.modal-card .name-input { margin-bottom: 1rem; }
+.modal-card .btn-primary { width: 100%; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ---------- Home about blurb ---------- */
+.home-about-blurb {
+  display: flex; gap: 1rem; align-items: flex-start;
+  margin-top: 3rem; padding: 1.25rem;
+  border: 1px solid var(--line); border-radius: 12px;
+  background: var(--card-bg);
+}
+.blurb-icon .material-symbols-outlined { font-size: 1.5rem; color: var(--accent); }
+.blurb-text h3 { margin: 0 0 0.35rem; font-size: 1rem; font-family: var(--font-display); }
+.blurb-text p { margin: 0 0 0.5rem; font-size: 0.875rem; opacity: 0.75; line-height: 1.5; }
+
+/* ---------- Multi-select ---------- */
+.multi-hint { font-size: 0.85rem; opacity: 0.55; margin-bottom: 0.75rem; }
+.opt-check { font-size: 1.2rem; color: var(--accent); flex-shrink: 0; margin-right: -0.25rem; }
+.option-selected { border-color: var(--accent) !important; background: color-mix(in srgb, var(--accent) 6%, var(--card-bg)); }
+.option-selected .opt-check { color: var(--accent); }
+.question-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; }
+
+/* ---------- About page ---------- */
+.about-lead { margin: 1.5rem 0; }
+.about-lead p { margin-bottom: 1rem; line-height: 1.7; opacity: 0.85; }
+.about-section { margin: 2.5rem 0; }
+.about-section-icon { margin-bottom: 0.5rem; }
+.about-section-icon .material-symbols-outlined { font-size: 1.75rem; color: var(--accent); }
+.about-section h2 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.75rem; }
+.about-section p { line-height: 1.7; opacity: 0.85; }
+.about-values-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
+.about-value-card {
+  padding: 1.25rem; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--card-bg); transition: border-color 0.2s;
+}
+.about-value-card:hover { border-color: var(--accent); }
+.about-value-card h3 { margin: 0 0 0.4rem; font-size: 1rem; font-family: var(--font-display); }
+.about-value-card p { margin: 0; font-size: 0.875rem; line-height: 1.6; opacity: 0.75; }
+.about-steps {
+  margin: 1rem 0 0; padding-left: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.about-steps li { font-size: 0.95rem; line-height: 1.6; opacity: 0.85; }
+.about-cta { text-align: center; margin: 3rem 0 1rem; }
+@media (min-width: 600px) { .about-values-grid { grid-template-columns: repeat(3, 1fr); } }

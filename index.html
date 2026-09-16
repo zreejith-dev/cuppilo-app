@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuppilo — Build a community with us</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <!-- Real, published QR library. Loaded globally as `window.QRCode`, used
+       only in src/lib/qr.js. -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+</head>
+<body>
+  <div id="header-slot"></div>
+  <main id="page-root"></main>
+  <div id="footer-slot"></div>
+
+  <!-- type="module" gives native ES module imports — no bundler needed for
+       a project this size. -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
