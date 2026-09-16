@@ -1,9 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/src/(.*)", "destination": "/src/$1" },
-    { "source": "/sql/(.*)", "destination": "/sql/$1" },
-    { "source": "/(.*\\..+)", "destination": "/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
